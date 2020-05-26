@@ -25,14 +25,18 @@ store6 = Store.create(name: "Yaletown", annual_revenue: 430000, mens_apparel: tr
 @mens_stores = Store.where(mens_apparel: true)
 
 
-puts "These are the stores that only carry men's apparel: "
+puts "These are the stores that carry men's apparel: "
 for item in @mens_stores
   puts "#{item.name}"
   puts "#{item.annual_revenue}"
 
 end
 
-@womens_stores = Store.where(annual_revenue < 1000000 && womens_apparel: true)
+@womens_stores = Store.where("annual_revenue < 1000000 AND womens_apparel = true")
 
+puts "These are the stores that carry women's apparel: "
+for item in @womens_stores
+  puts "#{item.name}"
+  puts "#{item.annual_revenue}"
 
-
+end
